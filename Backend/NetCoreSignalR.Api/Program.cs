@@ -2,7 +2,16 @@ using NetCoreSignalR.Api.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
+var services = builder.Services;
+var configuration = builder.Configuration;
+
+services.AddStackExchangeRedisCache(options =>
+{
+    var connection = configuration.GetConnectionString("Redis");
+    options.Configuration = connection;
+});
+
+services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
@@ -14,7 +23,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddSignalR();
+services.AddSignalR();
 
 var app = builder.Build();
 app.UseCors();
