@@ -39,7 +39,7 @@ export const WaitingForm = ({ joinChat }) => {
         ></Input>
       </div>
       <div className="form-inner">
-        <Button type="submit" colorScheme="blue" width="100%">
+        <Button type="submit" colorScheme="teal" width="100%">
           Join
         </Button>
       </div>

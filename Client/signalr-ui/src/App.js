@@ -9,10 +9,6 @@ function App() {
   const [chatRoom, setChatroom] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const handleClose = () => {
-
-  };
-
   const joinChat = async ({userName, chatRoom}) => {
     var connection = new HubConnectionBuilder()
       .withUrl("http://localhost:5295/chat")
@@ -34,9 +30,18 @@ function App() {
     }
   };
 
+  const sendMessage = (message) => {
+    connection.invoke("SendMessage", message);
+  };
+
+  const closeChat = async () => {
+    await connection.stop();
+    setConnection(null);
+  };
+
   return (
     <div className="main">
-      {connection ? <Chat messages={messages} chatRoom={chatRoom} closeChat={handleClose} /> : <WaitingForm joinChat={joinChat} /> }
+      {connection ? <Chat messages={messages} chatRoom={chatRoom} closeChat={closeChat} sendMessage={sendMessage} /> : <WaitingForm joinChat={joinChat} /> }
     </div>
   );
 }
