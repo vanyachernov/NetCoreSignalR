@@ -1,17 +1,31 @@
+using NetCoreSignalR.Api.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var services = builder.Services;
+var configuration = builder.Configuration;
+
+services.AddStackExchangeRedisCache(options =>
 {
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-}
+    var connection = configuration.GetConnectionString("Redis");
+    options.Configuration = connection;
+});
+
+services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+services.AddSignalR();
 
 var app = builder.Build();
-{
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
-
-    app.UseHttpsRedirection();
-    app.Run();
-}
+app.UseCors();
+app.MapHub<ChatHub>("/chat");
+app.Run();

@@ -1,0 +1,15 @@
+.message-block {
+    padding: 10px;
+    color: #fff;
+}
+
+.message-block-inner {
+    background-color: #5a3c77c7;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.message-username {
+    color: #dd8f21;
+    margin-left: 8px;
+}

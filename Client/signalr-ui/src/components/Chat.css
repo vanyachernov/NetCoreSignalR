@@ -1,0 +1,14 @@
+.cform-main {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    max-height: 400px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 10px 10px 23px -7px rgba(133,150,131,1);
+    -moz-box-shadow: 10px 10px 23px -7px rgba(133,150,131,1);
+    box-shadow: 10px 10px 23px -7px rgba(133,150,131,1);
+    height: 100%;
+}
