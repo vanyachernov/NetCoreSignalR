@@ -22,7 +22,7 @@
 
 > #### Chat:
 
-  ![Group-chat](https://github.com/vanyachernov/NetCoreRedis/blob/main/Docs/Images/Chat.gif)
+  ![Group-chat](https://github.com/vanyachernov/NetCoreSignalR/blob/main/Docs/Images/Chat.gif)
 
 
 #### ⭐️ Have a good day!
