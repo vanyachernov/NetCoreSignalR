@@ -27,7 +27,7 @@ public class ChatHub(IDistributedCache cache) : Hub<IChatClient>
     {
         var stringConnection = await _cache.GetStringAsync(Context.ConnectionId);
 
-        var connection = JsonSerializer.Deserialize<UserConnection>(stringConnection);
+        var connection = JsonSerializer.Deserialize<UserConnection>(stringConnection!);
 
         if (connection is not null)
         {
